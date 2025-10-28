@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background circle with thick border -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#2d5016" stroke-width="8"/>
+  
+  <!-- Dragon head (left side) - detailed and accurate -->
+  <g fill="#2d5016">
+    <!-- Dragon head main shape -->
+    <ellipse cx="30" cy="75" rx="12" ry="8" fill="#2d5016"/>
+    <!-- Dragon snout pointing right -->
+    <ellipse cx="40" cy="75" rx="8" ry="5" fill="#2d5016"/>
+    <!-- Dragon eye -->
+    <circle cx="35" cy="72" r="2" fill="white"/>
+    <!-- Dragon horns/crest - two curved elements -->
+    <path d="M25 70 Q20 60 30 55 Q35 50 40 55" stroke="#2d5016" stroke-width="3" fill="none"/>
+    <path d="M30 65 Q25 55 35 50 Q40 45 45 50" stroke="#2d5016" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Dragon body - flowing S curve from head -->
+  <g fill="#2d5016">
+    <!-- Main dragon body S-curve -->
+    <path d="M25 85 Q35 95 25 105 Q35 115 45 110 Q55 105 65 110 Q75 115 85 110 Q95 105 105 110 Q115 115 125 110 Q135 105 145 110 Q155 115 165 110 Q175 105 175 95 Q165 85 155 90 Q145 95 135 90 Q125 85 115 90 Q105 95 95 90 Q85 85 75 90 Q65 95 55 90 Q45 85 35 90 Q25 85 25 85 Z" fill="#2d5016"/>
+    <!-- Dragon body wave details -->
+    <path d="M30 90 Q40 95 50 90 Q60 95 70 90" stroke="white" stroke-width="1.5" fill="none"/>
+    <path d="M80 95 Q90 100 100 95 Q110 100 120 95" stroke="white" stroke-width="1.5" fill="none"/>
+    <path d="M130 100 Q140 105 150 100 Q160 105 170 100" stroke="white" stroke-width="1.5" fill="none"/>
+  </g>
+  
+  <!-- Main temple (center-top) - more detailed -->
+  <g fill="#2d5016">
+    <!-- Temple base -->
+    <rect x="80" y="60" width="40" height="20" fill="#2d5016"/>
+    <!-- Temple roof - curved traditional style -->
+    <path d="M75 60 L100 45 L125 60 Z" fill="#2d5016"/>
+    <!-- Temple roof details -->
+    <path d="M80 55 L100 50 L120 55" stroke="white" stroke-width="1" fill="none"/>
+    <!-- Temple body with vertical lines -->
+    <rect x="85" y="70" width="30" height="8" fill="none" stroke="white" stroke-width="1"/>
+    <!-- Central circular window -->
+    <circle cx="100" cy="74" r="4" fill="white"/>
+    <!-- Vertical columns -->
+    <line x1="88" y1="60" x2="88" y2="80" stroke="white" stroke-width="1"/>
+    <line x1="95" y1="60" x2="95" y2="80" stroke="white" stroke-width="1"/>
+    <line x1="105" y1="60" x2="105" y2="80" stroke="white" stroke-width="1"/>
+    <line x1="112" y1="60" x2="112" y2="80" stroke="white" stroke-width="1"/>
+  </g>
+  
+  <!-- Small tower (right) - connected by bridge -->
+  <g fill="#2d5016">
+    <!-- Tower base -->
+    <rect x="125" y="70" width="12" height="15" fill="#2d5016"/>
+    <!-- Tower roof -->
+    <path d="M122 70 L131 60 L140 70 Z" fill="#2d5016"/>
+    <!-- Tower roof details -->
+    <path d="M124 65 L131 62 L138 65" stroke="white" stroke-width="1" fill="none"/>
+    <!-- Tower body details -->
+    <rect x="127" y="75" width="8" height="8" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="131" cy="79" r="2" fill="white"/>
+  </g>
+  
+  <!-- Bridge connecting temple and tower -->
+  <rect x="45" y="82" width="80" height="5" fill="#2d5016"/>
+  <!-- Bridge details -->
+  <line x1="50" y1="84" x2="120" y2="84" stroke="white" stroke-width="1"/>
+  <line x1="50" y1="86" x2="120" y2="86" stroke="white" stroke-width="1"/>
+  
+  <!-- Decorative curved line (river) - flowing under structures -->
+  <path d="M20 90 Q40 100 Q60 95 Q80 100 Q100 95 Q120 100 Q140 95 Q160 100 Q180 95 Q185 90" fill="none" stroke="#2d5016" stroke-width="5"/>
+  <!-- River wave details -->
+  <path d="M25 92 Q45 102 Q65 97 Q85 102 Q105 97 Q125 102 Q145 97 Q165 102 Q180 97" stroke="white" stroke-width="1.5" fill="none"/>
+  
+  <!-- Text "CẦN THƠ" - curved along bottom circle -->
+  <path id="textPath" d="M40 160 Q100 170 Q160 160" fill="none" stroke="none"/>
+  <text font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2d5016">
+    <textPath href="#textPath" startOffset="50%" text-anchor="middle">CẦN THƠ</textPath>
+  </text>
+</svg>
