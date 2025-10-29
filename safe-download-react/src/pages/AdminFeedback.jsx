@@ -43,7 +43,7 @@ export default function AdminFeedback() {
   const loadReports = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/reports", {
+      const response = await fetch("${API_BASE_URL}/reports", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,7 +59,7 @@ export default function AdminFeedback() {
 
   const loadStats = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/reports/public/stats");
+      const response = await fetch("${API_BASE_URL}/reports/public/stats");
       const data = await response.json();
       setStats(data);
     } catch (error) {
@@ -70,7 +70,7 @@ export default function AdminFeedback() {
   const loadSingleReport = async (reportId) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/reports/${reportId}`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${reportId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -86,7 +86,7 @@ export default function AdminFeedback() {
   const updateReportStatus = async (reportId, newStatus, adminNotes = "") => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/reports/${reportId}/status`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${reportId}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -121,7 +121,7 @@ export default function AdminFeedback() {
     
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/reports/${selectedReport._id}/status`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${selectedReport._id}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -176,7 +176,7 @@ export default function AdminFeedback() {
   const saveEdit = async (reportId) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/reports/${reportId}/status`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${reportId}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -208,7 +208,7 @@ export default function AdminFeedback() {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/reports/${editingReport}/status`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${editingReport}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -237,7 +237,7 @@ export default function AdminFeedback() {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/reports/${reportId}`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${reportId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

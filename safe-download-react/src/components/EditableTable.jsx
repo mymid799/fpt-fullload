@@ -10,7 +10,7 @@ export default function EditableTable({ category, columns }) {
     const token = localStorage.getItem("token");
     setIsAdmin(!!token);
 
-    fetch(`http://localhost:5000/api/${category}`)
+    fetch(`${API_BASE_URL}/${category}`)
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);
@@ -42,7 +42,7 @@ export default function EditableTable({ category, columns }) {
     if (!token) return alert("Bạn cần đăng nhập admin!");
 
     try {
-      const res = await fetch(`http://localhost:5000/api/${category}/save`, {
+      const res = await fetch(`${API_BASE_URL}/${category}/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

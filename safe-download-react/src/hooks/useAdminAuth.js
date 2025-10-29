@@ -16,7 +16,7 @@ export default function useAdminAuth() {
         }
 
         // Kiểm tra token với backend để xác thực quyền admin
-        const response = await fetch('http://localhost:5000/api/auth/verify-admin', {
+        const response = await fetch('${API_BASE_URL}/auth/verify-admin', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,

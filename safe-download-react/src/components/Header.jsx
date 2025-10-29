@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSettings, FiLogOut, FiKey, FiUser, FiEdit3, FiEye, FiEyeOff } from "react-icons/fi";
+import { API_BASE_URL } from "../config/api";
 import FontSizeController from "./FontSizeController";
 
 export default function Header() {
@@ -66,7 +67,7 @@ export default function Header() {
   // Load system configuration
   const loadSystemConfig = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin-info/public");
+      const response = await fetch(`${API_BASE_URL}/admin-info/public`);
       const data = await response.json();
       setSystemConfig({
         enableReport: data.enableReport !== undefined ? data.enableReport : true,
@@ -83,7 +84,7 @@ export default function Header() {
       const token = localStorage.getItem("token");
       const newValue = !systemConfig[feature];
       
-      const response = await fetch("http://localhost:5000/api/admin-info/", {
+      const response = await fetch(`${API_BASE_URL}/admin-info/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +118,7 @@ export default function Header() {
     setLoginMessage(""); // Reset message
     
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -158,7 +159,7 @@ export default function Header() {
   // 👤 Load thông tin admin
   const loadAdminInfo = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin-info/public");
+      const response = await fetch(`${API_BASE_URL}/admin-info/public`);
       const data = await response.json();
       setAdminInfo(data);
     } catch (error) {
@@ -172,7 +173,7 @@ export default function Header() {
     
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/admin-info", {
+      const response = await fetch(`${API_BASE_URL}/admin-info`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -240,7 +241,7 @@ export default function Header() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/auth/change-password", {
+      const res = await fetch(`${API_BASE_URL}/auth/change-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -59,7 +59,7 @@ export default function Windows() {
     const loadData = async () => {
       try {
         console.log("📥 Loading Windows data from database...");
-        const res = await fetch("http://localhost:5000/api/column-config/data/windows");
+        const res = await fetch("${API_BASE_URL}/column-config/data/windows");
         console.log("📥 Response status:", res.status);
         
         const result = await res.json();
@@ -168,7 +168,7 @@ export default function Windows() {
       console.log("💾 Saving Windows data:", { data, columns });
       
       // Lưu cấu hình cột và dữ liệu
-      const res = await fetch("http://localhost:5000/api/column-config/data/save", {
+      const res = await fetch("${API_BASE_URL}/column-config/data/save", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

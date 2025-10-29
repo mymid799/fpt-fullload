@@ -22,7 +22,7 @@ export default function DynamicColumnManager({ category, onColumnsChange }) {
   const loadColumns = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/dynamic-columns/${category}`);
+      const response = await fetch(`${API_BASE_URL}/dynamic-columns/${category}`);
       const result = await response.json();
       
       if (result.success) {
@@ -46,7 +46,7 @@ export default function DynamicColumnManager({ category, onColumnsChange }) {
 
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/dynamic-columns', {
+      const response = await fetch('${API_BASE_URL}/dynamic-columns', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export default function DynamicColumnManager({ category, onColumnsChange }) {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/dynamic-columns/${columnId}`, {
+      const response = await fetch(`${API_BASE_URL}/dynamic-columns/${columnId}`, {
         method: 'DELETE',
       });
 
@@ -110,7 +110,7 @@ export default function DynamicColumnManager({ category, onColumnsChange }) {
   const handleToggleVisibility = async (columnId, isVisible) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/dynamic-columns/${columnId}`, {
+      const response = await fetch(`${API_BASE_URL}/dynamic-columns/${columnId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

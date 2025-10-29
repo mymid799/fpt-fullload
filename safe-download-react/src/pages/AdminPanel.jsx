@@ -35,7 +35,7 @@ export default function AdminPanel() {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/admin/${category}`)
+    fetch(`${API_BASE_URL}/admin/${category}`)
       .then((res) => res.json())
       .then(setData);
     
@@ -59,7 +59,7 @@ export default function AdminPanel() {
   const loadAdminInfo = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch('http://localhost:5000/api/admin-info/', {
+      const response = await fetch('${API_BASE_URL}/admin-info/', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ export default function AdminPanel() {
         [field]: value
       };
       
-      const response = await fetch('http://localhost:5000/api/admin-info/', {
+      const response = await fetch('${API_BASE_URL}/admin-info/', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ export default function AdminPanel() {
   // Load dynamic columns
   const loadDynamicColumns = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/dynamic-columns/${category}`);
+      const response = await fetch(`${API_BASE_URL}/dynamic-columns/${category}`);
       const result = await response.json();
       
       if (result.success) {
@@ -139,7 +139,7 @@ export default function AdminPanel() {
   const loadExistingDynamicData = async () => {
     try {
       // Get all dynamic data for this category
-      const response = await fetch(`http://localhost:5000/api/dynamic-columns/data/${category}/null`);
+      const response = await fetch(`${API_BASE_URL}/dynamic-columns/data/${category}/null`);
       const result = await response.json();
       
       if (result.success) {
@@ -164,7 +164,7 @@ export default function AdminPanel() {
   const addRow = async () => {
     try {
       // Add static data
-      const res = await fetch("http://localhost:5000/api/admin", {
+      const res = await fetch("${API_BASE_URL}/admin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...newItem, category }),
@@ -202,7 +202,7 @@ export default function AdminPanel() {
     for (const [columnId, value] of Object.entries(rowDynamicData)) {
       if (value !== undefined && value !== '') {
         try {
-          const response = await fetch('http://localhost:5000/api/dynamic-columns/data', {
+          const response = await fetch('${API_BASE_URL}/dynamic-columns/data', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -228,7 +228,7 @@ export default function AdminPanel() {
   };
 
   const deleteRow = async (id) => {
-    await fetch(`http://localhost:5000/api/admin/${id}`, { method: "DELETE" });
+    await fetch(`${API_BASE_URL}/admin/${id}`, { method: "DELETE" });
     setData(data.filter((d) => d._id !== id));
   };
 
@@ -242,7 +242,7 @@ export default function AdminPanel() {
     if (!editingCell) return;
     
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/${editingCell.rowId}`, {
+      const res = await fetch(`${API_BASE_URL}/admin/${editingCell.rowId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ [editingCell.field]: editingValue }),

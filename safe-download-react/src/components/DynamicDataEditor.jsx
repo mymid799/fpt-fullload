@@ -22,7 +22,7 @@ export default function DynamicDataEditor({
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/dynamic-columns/data/${category}/${parentRecord || 'null'}?parentModel=${parentModel || ''}`
+        `${API_BASE_URL}/dynamic-columns/data/${category}/${parentRecord || 'null'}?parentModel=${parentModel || ''}`
       );
       const result = await response.json();
       
@@ -51,7 +51,7 @@ export default function DynamicDataEditor({
     // Auto-save after a short delay
     setIsSaving(true);
     try {
-      const response = await fetch('http://localhost:5000/api/dynamic-columns/data', {
+      const response = await fetch('${API_BASE_URL}/dynamic-columns/data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

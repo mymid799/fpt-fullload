@@ -60,7 +60,7 @@ export default function Office() {
     // Load dữ liệu và cấu hình cột từ database
     const loadData = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/column-config/data/office");
+        const res = await fetch("${API_BASE_URL}/column-config/data/office");
         const result = await res.json();
         
         if (res.ok && result.success) {
@@ -202,7 +202,7 @@ export default function Office() {
 
     try {
       // Lưu cấu hình cột và dữ liệu
-      const res = await fetch("http://localhost:5000/api/column-config/data/save", {
+      const res = await fetch("${API_BASE_URL}/column-config/data/save", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

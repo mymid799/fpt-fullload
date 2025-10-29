@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/table.css";
+import { API_BASE_URL } from "../config/api";
 
 export default function Report() {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ export default function Report() {
   React.useEffect(() => {
     const checkFeatureStatus = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/admin-info/public");
+        const response = await fetch(`${API_BASE_URL}/admin-info/public`);
         const data = await response.json();
         setIsEnabled(data.enableReport !== undefined ? data.enableReport : true);
       } catch (error) {
@@ -58,7 +59,7 @@ export default function Report() {
     setSubmitMessage("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/reports", {
+      const response = await fetch(`${API_BASE_URL}/reports`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

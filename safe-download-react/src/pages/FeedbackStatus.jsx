@@ -21,7 +21,7 @@ export default function FeedbackStatus() {
 
   const checkFeatureStatus = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin-info/public");
+      const response = await fetch("${API_BASE_URL}/admin-info/public");
       const data = await response.json();
       setIsEnabled(data.enableFeedback !== undefined ? data.enableFeedback : true);
     } catch (error) {
@@ -32,7 +32,7 @@ export default function FeedbackStatus() {
 
   const loadReports = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/reports/public");
+      const response = await fetch("${API_BASE_URL}/reports/public");
       const data = await response.json();
       setReports(data);
     } catch (error) {
@@ -45,7 +45,7 @@ export default function FeedbackStatus() {
   const updateReportStatus = async (reportId, newStatus) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/reports/${reportId}/status`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${reportId}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

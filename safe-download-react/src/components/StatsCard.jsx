@@ -22,7 +22,7 @@ const StatsCard = () => {
   const fetchStats = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/stats');
+      const response = await fetch('${API_BASE_URL}/stats');
       
       if (!response.ok) {
         throw new Error('Không thể tải thống kê');
