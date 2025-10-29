@@ -12,7 +12,7 @@ const getApiBaseUrl = () => {
   
   // 2. Development mode
   if (import.meta.env.DEV) {
-    return '${API_BASE_URL}';
+    return `${API_BASE_URL}`;
   }
   
   // 3. Tự động detect từ hostname
@@ -25,7 +25,7 @@ const getApiBaseUrl = () => {
   
   // Localhost
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    return '${API_BASE_URL}';
+    return `${API_BASE_URL}`;
   }
   
   // Network IP

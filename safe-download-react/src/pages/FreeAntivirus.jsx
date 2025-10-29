@@ -65,7 +65,7 @@ export default function FreeAntivirus() {
     const loadData = async () => {
       try {
         console.log("📥 Loading Antivirus data from database...");
-        const res = await fetch("${API_BASE_URL}/column-config/data/antivirus");
+        const res = await fetch(`${API_BASE_URL}/column-config/data/antivirus`);
         const result = await res.json();
         console.log("📥 Load response (antivirus):", result);
         
@@ -227,7 +227,7 @@ export default function FreeAntivirus() {
     try {
       console.log("💾 Saving Antivirus data:", { category: "antivirus", data, columns });
       // Lưu cấu hình cột và dữ liệu
-      const res = await fetch("${API_BASE_URL}/column-config/data/save", {
+      const res = await fetch(`${API_BASE_URL}/column-config/data/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

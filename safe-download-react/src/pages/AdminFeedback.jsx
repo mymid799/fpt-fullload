@@ -43,7 +43,7 @@ export default function AdminFeedback() {
   const loadReports = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("${API_BASE_URL}/reports", {
+      const response = await fetch(`${API_BASE_URL}/reports`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,7 +59,7 @@ export default function AdminFeedback() {
 
   const loadStats = async () => {
     try {
-      const response = await fetch("${API_BASE_URL}/reports/public/stats");
+      const response = await fetch(`${API_BASE_URL}/reports/public/stats`);
       const data = await response.json();
       setStats(data);
     } catch (error) {

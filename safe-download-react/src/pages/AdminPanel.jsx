@@ -59,7 +59,7 @@ export default function AdminPanel() {
   const loadAdminInfo = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch('${API_BASE_URL}/admin-info/', {
+      const response = await fetch(`${API_BASE_URL}/admin-info/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ export default function AdminPanel() {
         [field]: value
       };
       
-      const response = await fetch('${API_BASE_URL}/admin-info/', {
+      const response = await fetch(`${API_BASE_URL}/admin-info/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ export default function AdminPanel() {
   const addRow = async () => {
     try {
       // Add static data
-      const res = await fetch("${API_BASE_URL}/admin", {
+      const res = await fetch(`${API_BASE_URL}/admin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...newItem, category }),
@@ -202,7 +202,7 @@ export default function AdminPanel() {
     for (const [columnId, value] of Object.entries(rowDynamicData)) {
       if (value !== undefined && value !== '') {
         try {
-          const response = await fetch('${API_BASE_URL}/dynamic-columns/data', {
+          const response = await fetch(`${API_BASE_URL}/dynamic-columns/data`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

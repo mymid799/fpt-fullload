@@ -10,7 +10,7 @@ export default function Navigation() {
     // Load settings from server (áp dụng cho tất cả users)
     const loadSettings = async () => {
       try {
-        const response = await fetch("${API_BASE_URL}/admin-info/public");
+        const response = await fetch(`${API_BASE_URL}/admin-info/public`);
         const data = await response.json();
         setEnableReport(data.enableReport !== undefined ? data.enableReport : true);
         setEnableFeedback(data.enableFeedback !== undefined ? data.enableFeedback : true);

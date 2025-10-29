@@ -36,7 +36,7 @@ export default function ColumnManager({
       const token = localStorage.getItem("token");
       
       // Step 1: Add column to actual data in database
-      const addColumnResponse = await fetch("${API_BASE_URL}/admin/columns/add", {
+      const addColumnResponse = await fetch(`${API_BASE_URL}/admin/columns/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export default function ColumnManager({
 
       // Step 2: Save column configuration
       console.log("💾 Saving column config:", { category, columns: updatedColumns });
-      const saveConfigResponse = await fetch("${API_BASE_URL}/column-config", {
+      const saveConfigResponse = await fetch(`${API_BASE_URL}/column-config`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -157,7 +157,7 @@ export default function ColumnManager({
       const columnToDelete = columns.find(col => col.key === columnKey);
       const isUrlColumn = columnToDelete && columnToDelete.type === 'url';
       
-      const deleteResponse = await fetch("${API_BASE_URL}/admin/columns/delete", {
+      const deleteResponse = await fetch(`${API_BASE_URL}/admin/columns/delete`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -177,7 +177,7 @@ export default function ColumnManager({
       }
 
       // Step 2: Save updated column configuration
-      const saveConfigResponse = await fetch("${API_BASE_URL}/column-config", {
+      const saveConfigResponse = await fetch(`${API_BASE_URL}/column-config`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -393,7 +393,7 @@ export const deleteColumn = async (columnKey, { columns, setColumns, data, setDa
     const columnToDelete = columns.find(col => col.key === columnKey);
     const isUrlColumn = columnToDelete && columnToDelete.type === 'url';
     
-    const deleteResponse = await fetch("${API_BASE_URL}/admin/columns/delete", {
+    const deleteResponse = await fetch(`${API_BASE_URL}/admin/columns/delete`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -419,7 +419,7 @@ export const deleteColumn = async (columnKey, { columns, setColumns, data, setDa
     }
 
     // Step 2: Save updated column configuration
-    const saveConfigResponse = await fetch("${API_BASE_URL}/column-config", {
+    const saveConfigResponse = await fetch(`${API_BASE_URL}/column-config`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

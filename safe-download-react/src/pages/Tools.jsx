@@ -60,7 +60,7 @@ export default function Tools() {
     const loadData = async () => {
       try {
         console.log("📥 Loading Tools data from database...");
-        const res = await fetch("${API_BASE_URL}/column-config/data/tools");
+        const res = await fetch(`${API_BASE_URL}/column-config/data/tools`);
         const result = await res.json();
         
         console.log("📥 Response status:", res.status);
@@ -214,7 +214,7 @@ export default function Tools() {
       console.log("💾 Saving Tools data:", { data, columns });
       
       // Lưu cấu hình cột và dữ liệu
-      const res = await fetch("${API_BASE_URL}/column-config/data/save", {
+      const res = await fetch(`${API_BASE_URL}/column-config/data/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

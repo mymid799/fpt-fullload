@@ -46,7 +46,7 @@ export default function DynamicColumnManager({ category, onColumnsChange }) {
 
     setIsLoading(true);
     try {
-      const response = await fetch('${API_BASE_URL}/dynamic-columns', {
+      const response = await fetch(`${API_BASE_URL}/dynamic-columns`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

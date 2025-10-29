@@ -51,7 +51,7 @@ export default function DynamicDataEditor({
     // Auto-save after a short delay
     setIsSaving(true);
     try {
-      const response = await fetch('${API_BASE_URL}/dynamic-columns/data', {
+      const response = await fetch(`${API_BASE_URL}/dynamic-columns/data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

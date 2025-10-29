@@ -27,7 +27,7 @@ export default function VirusTotalScan() {
     setScanProgress('Đang gửi URL để quét...');
     
     try {
-      const response = await fetch('${API_BASE_URL}/virustotal/scan', {
+      const response = await fetch(`${API_BASE_URL}/virustotal/scan`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export default function VirusTotalScan() {
     setScanProgress(`Đang quét ${urlList.length} URL...`);
     
     try {
-      const response = await fetch('${API_BASE_URL}/virustotal/batch-scan', {
+      const response = await fetch(`${API_BASE_URL}/virustotal/batch-scan`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
