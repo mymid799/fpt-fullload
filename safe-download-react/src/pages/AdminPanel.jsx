@@ -4,6 +4,7 @@ import DynamicColumnManager from "../components/DynamicColumnManager";
 import DynamicDataEditor from "../components/DynamicDataEditor";
 import BitOptionsDropdown from "../components/BitOptionsDropdown";
 
+import { API_BASE_URL } from "../config/api";
 export default function AdminPanel() {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState("windows");

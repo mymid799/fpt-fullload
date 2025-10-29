@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/table.css";
 
+import { API_BASE_URL } from "../config/api";
 export default function AdminFeedback() {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -3,6 +3,7 @@ import ColumnManager, { ColumnHeader, deleteColumn } from "../components/ColumnM
 import UrlCell from "../components/UrlCell";
 import SmartTextCell from "../components/SmartTextCell";
 import BitOptionsDropdown from "../components/BitOptionsDropdown";
+import { API_BASE_URL } from "../config/api";
 import "../styles/table.css";
 
 export default function Windows() {

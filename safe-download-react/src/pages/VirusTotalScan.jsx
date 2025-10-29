@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAdminAuth from '../hooks/useAdminAuth';
 
+import { API_BASE_URL } from "../config/api";
 export default function VirusTotalScan() {
   const [url, setUrl] = useState('');
   const [urls, setUrls] = useState('');

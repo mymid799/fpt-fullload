@@ -5,6 +5,7 @@ import SmartTextCell from "../components/SmartTextCell";
 import BitOptionsDropdown from "../components/BitOptionsDropdown";
 import "../styles/table.css";
 
+import { API_BASE_URL } from "../config/api";
 export default function Office() {
   const [data, setData] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
