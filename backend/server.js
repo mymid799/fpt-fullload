@@ -19,16 +19,43 @@ import statsRoutes from "./routes/statsRoutes.js";
 
 dotenv.config();
 
+// 📦 Environment Variables
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || '0.0.0.0';
+const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
+// CORS Origins - cho phép nhiều domains
+const allowedOrigins = process.env.CORS_ORIGINS 
+  ? process.env.CORS_ORIGINS.split(',').map(origin => origin.trim())
+  : ['*'];
+
 // ✅ PHẢI TẠO app TRƯỚC khi dùng app.use()
 const app = express();
 
-// 🔧 Middleware
+// 🔧 Middleware - CORS Configuration
 app.use(cors({
-  origin: '*',  // Cho phép tất cả origin
+  origin: function(origin, callback) {
+    // Cho phép request không có origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Cho phép tất cả trong development
+    if (allowedOrigins.includes('*')) {
+      return callback(null, true);
+    }
+    
+    // Kiểm tra origin có trong danh sách cho phép không
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin ${origin} not allowed by CORS`));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
 
 // 🛣️ Gắn route
@@ -45,13 +72,51 @@ app.use("/api/dynamic-columns", dynamicColumnRoutes);
 app.use("/api/column-config", columnConfigRoutes);
 app.use("/api/stats", statsRoutes);
 
-// ⚙️ Kết nối MongoDB
+// ⚙️ Kết nối MongoDB Atlas
+console.log('');
+console.log('========================================');
+console.log('  Safe Download Portal - Cần Thơ Gov');
+console.log('========================================');
+console.log('');
+
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("✅ Connected to MongoDB Atlas");
-    app.listen(process.env.PORT || 5000, '0.0.0.0', () =>
-      console.log(`🚀 Server running on 0.0.0.0:${process.env.PORT || 5000}`)
-    );
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .then(() => {
+    console.log('✅ Connected to MongoDB Atlas');
+    console.log(`   Database: ${mongoose.connection.name}`);
+    console.log(`   Host: ${mongoose.connection.host}`);
+    console.log('');
+    
+    // Start Server
+    app.listen(PORT, HOST, () => {
+      console.log('========================================');
+      console.log('  🚀 Server is running!');
+      console.log('========================================');
+      console.log('');
+      console.log(`  📍 Local:    http://localhost:${PORT}`);
+      console.log(`  🌐 Network:  http://${HOST}:${PORT}`);
+      console.log(`  📱 Frontend: ${process.env.FRONTEND_URL || 'Not configured'}`);
+      console.log(`  🔒 CORS:     ${allowedOrigins.join(', ')}`);
+      console.log(`  ⚙️  Mode:     ${NODE_ENV}`);
+      console.log('');
+      console.log('========================================');
+      console.log('');
+      console.log('  💡 Press Ctrl+C to stop');
+      console.log('');
+    });
+  })
+  .catch((err) => {
+    console.error('');
+    console.error('❌ MongoDB connection error:');
+    console.error('   ', err.message);
+    console.error('');
+    console.error('🔍 Please check:');
+    console.error('   1. MONGODB_URI in .env file');
+    console.error('   2. Network connection');
+    console.error('   3. MongoDB Atlas IP whitelist');
+    console.error('');
+    process.exit(1);
+  });
